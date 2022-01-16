@@ -6,6 +6,10 @@ using Pathfinding;
 public class NPCAI : MonoBehaviour
 {
     public Transform target;
+
+    public Transform waypoint1;
+    public Transform waypoint2;
+
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
 
@@ -21,6 +25,7 @@ public class NPCAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
+        target = waypoint1;
         InvokeRepeating("UpdatePath", 0f, 1f);
     }
 

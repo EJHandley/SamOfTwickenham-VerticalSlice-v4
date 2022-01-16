@@ -13,10 +13,16 @@ public class CharacterStats: MonoBehaviour
 
     public int currentEnergy { get; private set; }
 
-    public Stat basicDmg;
-    public Stat secondDmg;
+    public Stat armour;
 
+    public Stat baseDamage;
     public Stat basicRange;
+
+    public Stat gold;
+    public int currentGold { get; private set; }
+
+    public Stat experience;
+    public int currentExperience { get; private set; }
 
     private void Awake()
     {
@@ -26,6 +32,7 @@ public class CharacterStats: MonoBehaviour
 
     public void TakeDamage (int dmg)
     {
+        dmg -= armour.GetValue();
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
 
         currentHealth -= dmg;

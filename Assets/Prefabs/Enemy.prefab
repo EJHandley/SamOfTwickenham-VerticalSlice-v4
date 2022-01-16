@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2194832183328146443}
   - component: {fileID: 3442664766490703133}
   - component: {fileID: 3581295604046538858}
+  - component: {fileID: 211642616}
+  - component: {fileID: 211642617}
   - component: {fileID: 414659199}
   m_Layer: 21
   m_Name: Enemy
@@ -126,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 200
-  nextWaypointDistance: 3
+  nextWaypointDistance: 0.75
 --- !u!114 &3581295604046538858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,9 +142,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 3442664766490703133}
-  target: {fileID: 0}
-  aggroRange: 5
-  attackRange: 0
+--- !u!114 &211642616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2194832183328146445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c21608f703d9146bac5d610dd50042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 40
+  healthRegenRate:
+    baseValue: 0
+  maxEnergy:
+    baseValue: 0
+  energyRegenRate:
+    baseValue: 0
+  armour:
+    baseValue: 1
+  baseDamage:
+    baseValue: 1
+  basicRange:
+    baseValue: 0
+--- !u!114 &211642617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2194832183328146445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a04999a9bc712c14d8a46005c929af95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  interactionTransform: {fileID: 2194832183328146440}
+  player: {fileID: 0}
+  isItem: 0
+  isEquipment: 0
+  isEnemy: 1
+  isChest: 0
 --- !u!114 &414659199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,13 +196,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2194832183328146445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d79e8cf729f4249a6238f9e4df90d8, type: 3}
+  m_Script: {fileID: 11500000, guid: cf026dca62cb7cd4cae196a0dd47a4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAI: {fileID: 3442664766490703133}
-  target: {fileID: 0}
-  aggroRange: 5
-  attackRange: 0
+  isPlayer: 0
+  isEnemy: 1
+  attackRange: 1.5
+  attackSpeed: 1
 --- !u!1001 &5305543885385258726
 PrefabInstance:
   m_ObjectHideFlags: 0

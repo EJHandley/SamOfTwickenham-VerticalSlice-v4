@@ -362,6 +362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 41333311}
+  attackPoint: {fileID: 5596006840659782099}
+  myTarget: {fileID: 0}
   healthBar: {fileID: 0}
   energyBar: {fileID: 0}
 --- !u!61 &979768507314874826
@@ -420,7 +422,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8067104962170875833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1cbe949ff62ab6488a302c2a852f3d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 307718636fa2c2243b56ef0a0e7bcfac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
@@ -431,9 +433,9 @@ MonoBehaviour:
     baseValue: 0
   energyRegenRate:
     baseValue: 0
-  basicDmg:
-    baseValue: 1
-  secondDmg:
-    baseValue: 2
+  armour:
+    baseValue: 0
+  baseDamage:
+    baseValue: 0
   basicRange:
     baseValue: 0
