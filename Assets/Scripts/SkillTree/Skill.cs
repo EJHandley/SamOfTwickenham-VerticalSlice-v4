@@ -7,8 +7,8 @@ public class Skill : ScriptableObject
     public Sprite icon = null;
     public bool isDefaultItem = false;
 
-    public virtual void Use()
+    public virtual void Select()
     {
-        Debug.Log("Using " + name);
+        Debug.Log("I selected " + name);
     }
 }

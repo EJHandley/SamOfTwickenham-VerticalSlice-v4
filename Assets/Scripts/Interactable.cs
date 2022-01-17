@@ -7,8 +7,6 @@ public class Interactable : MonoBehaviour
     public float radius = 3f;
     public Transform interactionTransform;
 
-    public Transform player;
-
     public bool isItem;
     public bool isEquipment;
     public bool isEnemy;
@@ -16,9 +14,21 @@ public class Interactable : MonoBehaviour
     public bool isChest;
 
     [HideInInspector]
+    public bool chestInRange = false;
     public bool inRange = false;
     [HideInInspector]
     public bool hasInteracted = false;
+
+    #region Player Ref
+    PlayerManager player;
+    Transform playerTransform;
+
+    public void Start()
+    {
+        player = PlayerManager.instance;
+        playerTransform = player.player.transform;
+    }
+    #endregion
 
     public virtual void Interact()
     {
@@ -29,7 +39,7 @@ public class Interactable : MonoBehaviour
     {
         if(isItem || isEquipment)
         {
-            float distance = Vector2.Distance(player.position, interactionTransform.position);
+            float distance = Vector2.Distance(playerTransform.position, interactionTransform.position);
             
             if(distance <= radius)
             {
@@ -39,7 +49,7 @@ public class Interactable : MonoBehaviour
 
         if(isNPC)
         {
-            float distance = Vector2.Distance(player.position, interactionTransform.position);
+            float distance = Vector2.Distance(playerTransform.position, interactionTransform.position);
 
             if (distance <= radius)
             {
@@ -51,9 +61,23 @@ public class Interactable : MonoBehaviour
                 inRange = false;
                 Interact();
             }
-
         }
 
+        if(isChest)
+        {
+            float distance = Vector2.Distance(playerTransform.position, interactionTransform.position);
+
+            if (distance <= radius)
+            {
+                chestInRange = true;
+                Interact();
+            }
+            else
+            {
+                chestInRange = false;
+                Interact();
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()

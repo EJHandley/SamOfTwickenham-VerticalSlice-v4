@@ -13,13 +13,14 @@ public class QuestGiver : MonoBehaviour
     private void Start()
     {
         player = PlayerManager.instance;
-        playerStats = player.GetComponent<PlayerStats>();
+        playerStats = player.player.GetComponent<PlayerStats>();
     }
     #endregion
 
     public GameObject questWindow;
     public TMP_Text titleText;
     public TMP_Text descriptionText;
+    public TMP_Text questSumText;
     public TMP_Text experienceText;
     public TMP_Text goldText;
 
@@ -28,6 +29,7 @@ public class QuestGiver : MonoBehaviour
         questWindow.SetActive(true);
         titleText.text = quest.title;
         descriptionText.text = quest.description;
+        questSumText.text = quest.goal;
         experienceText.text = quest.experienceReward.ToString();
         goldText.text = quest.goldReward.ToString();
     }

@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class CharacterStats: MonoBehaviour
 {
+    public bool isPlayer;
+
+    public GameObject healthCanvas;
+    public Slider healthBar;
+    public Slider energyBar;
+
     public Stat maxHealth;
     public Stat healthRegenRate;
 
@@ -21,13 +28,33 @@ public class CharacterStats: MonoBehaviour
     public Stat gold;
     public int currentGold { get; private set; }
 
-    public Stat experience;
-    public int currentExperience { get; private set; }
-
     private void Awake()
     {
         currentHealth = maxHealth.GetValue();
-        currentEnergy = maxEnergy.GetValue();
+        healthBar.maxValue = maxHealth.GetValue();
+
+        if(isPlayer)
+        {
+            currentEnergy = maxEnergy.GetValue();
+            energyBar.maxValue = maxEnergy.GetValue();
+            currentGold = gold.GetValue();
+        }
+
+        if(!isPlayer)
+        {
+            healthCanvas.SetActive(false);
+        }
+    }
+
+    public void Update()
+    {
+        if(!isPlayer)
+        {
+            if(currentHealth < maxHealth.GetValue())
+            {
+                healthCanvas.SetActive(true);
+            }
+        }
     }
 
     public void TakeDamage (int dmg)
@@ -36,8 +63,9 @@ public class CharacterStats: MonoBehaviour
         dmg = Mathf.Clamp(dmg, 0, int.MaxValue);
 
         currentHealth -= dmg;
+        healthBar.value = currentHealth;
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -48,6 +76,7 @@ public class CharacterStats: MonoBehaviour
         energy = Mathf.Clamp(energy, 0, int.MaxValue);
 
         currentEnergy -= energy;
+        energyBar.value = currentEnergy;
     }
 
     public virtual void Die()

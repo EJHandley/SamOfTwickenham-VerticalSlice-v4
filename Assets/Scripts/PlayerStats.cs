@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
 {
     public Quest quest;
+
+    public GameObject gameOver;
 
     void Start()
     {
@@ -29,5 +32,10 @@ public class PlayerStats : CharacterStats
             armour.RemoveModifier(oldItem.armourModifier);
             baseDamage.RemoveModifier(oldItem.damageModifier);
         }
+    }
+
+    public override void Die()
+    {
+        gameOver.SetActive(true);
     }
 }

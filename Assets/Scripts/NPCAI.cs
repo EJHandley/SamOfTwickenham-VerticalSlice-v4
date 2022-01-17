@@ -26,7 +26,8 @@ public class NPCAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         target = waypoint1;
-        InvokeRepeating("UpdatePath", 0f, 1f);
+        if(seeker != null)
+            InvokeRepeating("UpdatePath", 0f, 1f);
     }
 
     void OnPathComplete(Path p)

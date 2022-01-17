@@ -7,10 +7,12 @@ public class EnemyStats : CharacterStats
     PlayerManager player;
     PlayerStats playerStats;
 
+    public LevelSystem levelSystem;
+
     public void Start()
     {
         player = PlayerManager.instance;
-        playerStats = player.GetComponent<PlayerStats>();
+        playerStats = player.player.GetComponent<PlayerStats>();
     }
 
     public override void Die()
@@ -18,12 +20,12 @@ public class EnemyStats : CharacterStats
         base.Die();
         //Death Anim
 
-        if (playerStats.quest.isActive && playerStats.quest.goal.goalType == GoalType.Kill) 
+        if (playerStats.quest.isActive && playerStats.quest.questGoal.goalType == GoalType.Kill) 
         {
-            playerStats.quest.goal.EnemyKilled();
-            if(playerStats.quest.goal.IsReached())
+            playerStats.quest.questGoal.EnemyKilled();
+            if(playerStats.quest.questGoal.IsReached())
             {
-                playerStats.experience.AddModifier(playerStats.quest.experienceReward);
+                levelSystem.AddExperience(playerStats.quest.experienceReward);
                 playerStats.gold.AddModifier(playerStats.quest.goldReward);
                 playerStats.quest.Complete();
             }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: QuickFeet
   m_EditorClassIdentifier: 
   name: QuickFeet
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 29a1226f7b5e20240942612e151c3c4c, type: 3}
   isDefaultItem: 0

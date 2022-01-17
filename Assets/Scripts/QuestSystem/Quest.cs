@@ -9,10 +9,11 @@ public class Quest
 
     public string title;
     public string description;
+    public string goal;
     public int experienceReward;
     public int goldReward;
 
-    public QuestGoal goal;
+    public QuestGoal questGoal;
 
     public void Complete()
     {

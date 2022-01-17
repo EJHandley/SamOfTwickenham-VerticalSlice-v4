@@ -8,12 +8,7 @@ public class NPC : Interactable
     public Animator animator;
     public NPCAI npcAI;
 
-    DialogueManager dialogueManager;
-
-    private void Start()
-    {
-        dialogueManager = DialogueManager.instance;
-    }
+    public DialogueManager dialogueManager;
 
     public override void Interact()
     {
