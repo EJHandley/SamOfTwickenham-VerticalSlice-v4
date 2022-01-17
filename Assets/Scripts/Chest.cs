@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Chest : Interactable
 {
-    ChestInventory chestInventory;
+    public ChestInventory chestInventory;
 
     public GameObject playerInventoryUI;
     public GameObject chestUI;

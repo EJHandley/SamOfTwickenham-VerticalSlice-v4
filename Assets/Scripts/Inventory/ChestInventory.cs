@@ -5,23 +5,17 @@ using UnityEngine;
 public class ChestInventory : MonoBehaviour
 {
     #region Singleton
-    
+
+    public static ChestInventory instance;
+
     void Awake()
     {
-        if (instance != null)
-        {
-            Debug.LogWarning("More than one instance of Inventory found!");
-            return;
-        }
-
         instance = this;
     }
     #endregion
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
-
-    public static ChestInventory instance;
 
     public int space = 8;
 
