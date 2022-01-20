@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour
 
     public Transform attackPoint;
     public CharacterStats myTarget;
+    public CharacterStats[] targetsInRange;
 
     public Image healthBar;
     public Image energyBar;
@@ -34,44 +35,5 @@ public class CharacterController : MonoBehaviour
         {
             myTarget = null;
         }
-
-
-
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-
-        }
-    }
-
-    public void BasicAttack(CharacterStats targetStats)
-    {
-        int damage = stats.baseDamage.GetValue();
-        int range = stats.basicRange.GetValue();
-
-        float distanceToEnemy = Vector2.Distance(attackPoint.position, targetStats.transform.position);
-
-        if(distanceToEnemy <= range)
-        {
-            targetStats.TakeDamage(damage);
-            print("Attack for " + damage);
-        }
-    }
-
-    public void SecondaryAttack()
-    {
-        int damage = stats.baseDamage.GetValue();
-
-        stats.TakeDamage(damage);
-        print("Attack for" + damage);
-    }
-
-    public void UseEnergy(float amount)
-    {
-
-    }
-
-    public void EnergyRegen()
-    {
-
     }
 }

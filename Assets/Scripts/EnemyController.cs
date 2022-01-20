@@ -37,7 +37,6 @@ public class EnemyController : MonoBehaviour
             if (targetStats != null)
             {
                 combat.BasicAttack(targetStats);
-                Debug.Log("Hit Player");
             }
         }
     }

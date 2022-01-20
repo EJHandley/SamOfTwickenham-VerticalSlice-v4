@@ -6,13 +6,12 @@ public class ChestInventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
 
-    ChestInventory chestInventory;
+    public ChestInventory chestInventory;
 
     ChestInventorySlot[] chestSlots;
 
     void Start()
     {
-        chestInventory = ChestInventory.instance;
         chestInventory.onItemChangedCallback += UpdateUI;
 
         chestSlots = itemsParent.GetComponentsInChildren<ChestInventorySlot>();

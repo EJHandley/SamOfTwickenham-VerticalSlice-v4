@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
 public class CharacterStats: MonoBehaviour
 {
     public bool isPlayer;
+    public bool energyCheck = false;
 
     public GameObject healthCanvas;
     public Slider healthBar;
@@ -16,9 +18,9 @@ public class CharacterStats: MonoBehaviour
     public int currentHealth { get; private set; }
 
     public Stat maxEnergy;
-    public Stat energyRegenRate;
+    public float energyRegenRate = 0.5f;
 
-    public int currentEnergy { get; private set; }
+    public int currentEnergy;
 
     public Stat armour;
 
@@ -71,13 +73,22 @@ public class CharacterStats: MonoBehaviour
         }
     }
 
-    public void UseEnergy (int energy)
+    public void SetEnergy(int energy)
     {
         energy = Mathf.Clamp(energy, 0, int.MaxValue);
 
         currentEnergy -= energy;
         energyBar.value = currentEnergy;
+
+        energyCheck = true;
     }
+
+    public void Heal(int hp)
+    {
+        currentHealth += hp;
+        healthBar.value = currentHealth;
+    }    
+
 
     public virtual void Die()
     { 

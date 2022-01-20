@@ -17,11 +17,6 @@ public class Chest : Interactable
 
     bool chestIsOpen = false;
 
-    public void Awake()
-    {
-        chestInventory = ChestInventory.instance;
-    }
-
     public override void Interact()
     {
         base.Interact();

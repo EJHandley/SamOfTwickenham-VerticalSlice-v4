@@ -10,6 +10,8 @@ public class NPC : Interactable
 
     public DialogueManager dialogueManager;
 
+    public bool isLord;
+
     public override void Interact()
     {
         base.Interact();
@@ -26,17 +28,21 @@ public class NPC : Interactable
 
     public void TriggerDialogue()
     {
-        npcAI.enabled = false;
         hasInteracted = true;
         animator.SetBool("isActive", true);
         dialogueManager.StartDialogue(dialogue);
+        if (isLord)
+            return;
+        npcAI.enabled = false;
     }
 
     public void EndDialogue()
     {
-        npcAI.enabled = true;
         hasInteracted = false;
         animator.SetBool("isActive", false);
+        if (isLord)
+            return;
+        npcAI.enabled = true;
     }
 
 

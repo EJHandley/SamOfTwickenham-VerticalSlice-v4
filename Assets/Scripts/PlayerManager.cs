@@ -16,4 +16,21 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     public GameObject player;
+
+    public GameObject hud;
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (hud.activeSelf)
+            {
+                hud.SetActive(false);
+            }
+            else
+            {
+                hud.SetActive(true);
+            }
+        }
+    }
 }
